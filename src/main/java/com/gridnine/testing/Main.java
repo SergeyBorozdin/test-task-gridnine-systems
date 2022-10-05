@@ -9,7 +9,7 @@ public class Main {
             System.out.println(obj);
         }
         System.out.println("\tfilter1================");
-        for (Object obj : FilterAirFlight.getExcludeSegmentBeforeTime(FlightBuilder.createFlights())) {
+        for (Object obj : FilterAirFlight.FlightBeforeTime(FlightBuilder.createFlights())) {
             System.out.println(obj);
         }
     }

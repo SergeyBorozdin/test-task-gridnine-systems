@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FilterAirFlight {
 
-    public static List<Flight> getExcludeSegmentBeforeTime (List<Flight> flights ) {
+    public static List<Flight> FlightBeforeTime(List<Flight> flights ) {
         LocalDateTime now = LocalDateTime.now();
         List<Flight> filterFlights = new ArrayList<>();
         for (Flight obj : flights) {
@@ -24,11 +24,11 @@ public class FilterAirFlight {
         return filterFlights;
     }
 
-    public static List<Segment> getExcludeArrivalsBeforeDeparture () {
+    public static List<Segment> arrivalsBeforeDeparture() {
         return new ArrayList<>();
     }
 
-    public static List<Segment> getExcludeTransferMore2hours () {
+    public static List<Segment> transferMore2hours() {
         return new ArrayList<>();
     }
 }
