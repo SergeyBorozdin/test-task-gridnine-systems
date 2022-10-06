@@ -2,26 +2,22 @@ package com.gridnine.testing;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FilterAirFlight {
 
     public static List<Flight> FlightBeforeTime(List<Flight> flights ) {
         LocalDateTime now = LocalDateTime.now();
-        List<Flight> filterFlights = new ArrayList<>();
+        Set<Flight> filterFlights = new HashSet<>(); // для больших наборов перелетов используем поиск в хеш сет
         for (Flight obj : flights) {
-            String segment = obj.toString();
-            int start = 1;
-            int end = segment.indexOf('|', start);
-            String dateDeparture = segment.substring(start, end);
-            LocalDateTime dateTime = LocalDateTime.parse(dateDeparture);
-            if (dateTime.isBefore(now)) {
+            if (obj.getSegments().get(0).getDepartureDate().isBefore(now)) {
                 continue;
             }
             filterFlights.add(obj);
         }
-
-        return filterFlights;
+        return filterFlights.stream().toList();
     }
 
     public static List<Segment> arrivalsBeforeDeparture() {
