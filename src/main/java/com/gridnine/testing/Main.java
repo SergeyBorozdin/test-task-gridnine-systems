@@ -9,9 +9,16 @@ public class Main {
             System.out.println(obj);
         }
         System.out.println("\tfilter1================");
-        for (Object obj : FilterAirFlight.FlightBeforeTime(FlightBuilder.createFlights())) {
+        for (Object obj : FilterAirFlight.flightBeforeTime(FlightBuilder.createFlights())) {
+            System.out.println(obj);
+        }
+        System.out.println("\tfilter2================");
+        for (Object obj : FilterAirFlight.arrivalsBeforeDeparture(FlightBuilder.createFlights())) {
+            System.out.println(obj);
+        }
+        System.out.println("\tfilter3================");
+        for (Object obj : FilterAirFlight.transferMore2hours(FlightBuilder.createFlights())) {
             System.out.println(obj);
         }
     }
-
 }
