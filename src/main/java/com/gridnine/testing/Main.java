@@ -8,17 +8,16 @@ public class Main {
         for (Object obj : FlightBuilder.createFlights()) {
             System.out.println(obj);
         }
-        System.out.println("\tfilter1================");
-        for (Object obj : FilterAirFlight.flightBeforeTime(FlightBuilder.createFlights())) {
-            System.out.println(obj);
-        }
-        System.out.println("\tfilter2================");
-        for (Object obj : FilterAirFlight.arrivalsBeforeDeparture(FlightBuilder.createFlights())) {
-            System.out.println(obj);
-        }
-        System.out.println("\tfilter3================");
-        for (Object obj : FilterAirFlight.transferMore2hours(FlightBuilder.createFlights())) {
-            System.out.println(obj);
-        }
+        System.out.println("\tflightBeforeTime=======================");
+        Filters flightBeforeTime = new FlightBeforeTime();
+        flightBeforeTime.filters(FlightBuilder.createFlights()).forEach(System.out::println);
+
+        System.out.println("\tarrivalsBeforeDeparture================");
+        Filters arrivalsBeforeDeparture = new ArrivalsBeforeDeparture();
+        arrivalsBeforeDeparture.filters(FlightBuilder.createFlights()).forEach(System.out::println);
+
+        System.out.println("\ttransferMore2hours=====================");
+        Filters transferMore2hours = new TransferMore2hours();
+        transferMore2hours.filters(FlightBuilder.createFlights()).forEach(System.out::println);
     }
 }
