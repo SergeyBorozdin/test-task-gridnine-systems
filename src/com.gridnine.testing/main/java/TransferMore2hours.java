@@ -1,5 +1,3 @@
-package com.gridnine.testing;
-
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.List;

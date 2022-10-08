@@ -1,5 +1,3 @@
-package com.gridnine.testing;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,7 +10,7 @@ import java.util.stream.Collectors;
  * Factory class to get sample list of flights.
  */
 class FlightBuilder {
-    static List<Flight> createFlights() {
+    static List<Flight> createFlights() { // создает лист обьектов локалдатетайм с датами вылета и прилета
         LocalDateTime threeDaysFromNow = LocalDateTime.now().plusDays(3);
         return Arrays.asList(
             //A normal flight with two hour duration
@@ -33,16 +31,16 @@ class FlightBuilder {
                 threeDaysFromNow.plusHours(6), threeDaysFromNow.plusHours(7)));
     }
 
-    private static Flight createFlight(final LocalDateTime... dates) {
-        if ((dates.length % 2) != 0) {
+    private static Flight createFlight(final LocalDateTime... dates) { // принимает массив локалдатетайм
+        if ((dates.length % 2) != 0) { // проверка что есть вылет и прилет, иначе обрабатывает эксепшн
             throw new IllegalArgumentException(
                 "you must pass an even number of dates");
         }
-        List<Segment> segments = new ArrayList<>(dates.length / 2);
-        for (int i = 0; i < (dates.length - 1); i += 2) {
-            segments.add(new Segment(dates[i], dates[i + 1]));
+        List<Segment> segments = new ArrayList<>(dates.length / 2); // создает массив сегментов ограничивает емкость в половину длинны принятого массива
+        for (int i = 0; i < (dates.length - 1); i += 2) { // цикл по длинне массива локалдатетайм с шагом через 1
+            segments.add(new Segment(dates[i], dates[i + 1])); // запись в новый массив сегмента даты и время вылет-прилет
         }
-        return new Flight(segments);
+        return new Flight(segments); // возращает обьект флайдж, передает в него лист сегментов
     }
 }
 
@@ -52,8 +50,8 @@ class FlightBuilder {
 class Flight {
     private final List<Segment> segments;
 
-    Flight(final List<Segment> segs) {
-        segments = segs;
+    Flight(final List<Segment> segs) { // получает в конструктор массив сегментов
+        segments = segs; // сохранияет из конструктора переданный в свой массив
     }
 
     List<Segment> getSegments() {
@@ -62,8 +60,8 @@ class Flight {
 
     @Override
     public String toString() {
-        return segments.stream().map(Object::toString)
-            .collect(Collectors.joining(" "));
+        return segments.stream().map(Object::toString) // использует стрим, мап преобразует в строку каждый сегмент
+            .collect(Collectors.joining(" ")); // и джойнит пробелом сегменты
     }
 }
 
@@ -75,9 +73,9 @@ class Segment {
 
     private final LocalDateTime arrivalDate;
 
-    Segment(final LocalDateTime dep, final LocalDateTime arr) {
-        departureDate = Objects.requireNonNull(dep);
-        arrivalDate = Objects.requireNonNull(arr);
+    Segment(final LocalDateTime dep, final LocalDateTime arr) { // в конструкторе присваивает своим переменным значения вылета прилета
+        departureDate = Objects.requireNonNull(dep); // проверяет не равно ли значение null
+        arrivalDate = Objects.requireNonNull(arr); // позволяет выбрасыывать исключения или лог
     }
 
     LocalDateTime getDepartureDate() {
