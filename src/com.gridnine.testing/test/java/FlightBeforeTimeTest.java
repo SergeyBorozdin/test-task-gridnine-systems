@@ -6,10 +6,10 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ArrivalsBeforeDepartureTest extends FlightBuilderClass {
+public class FlightBeforeTimeTest extends FlightBuilderClass {
 
-    public ArrivalsBeforeDepartureTest() {
-        super(new ArrivalsBeforeDeparture());
+    public FlightBeforeTimeTest() {
+        super(new FlightBeforeTime());
     }
 
     @Before

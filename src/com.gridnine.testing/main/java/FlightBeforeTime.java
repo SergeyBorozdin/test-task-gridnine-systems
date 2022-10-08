@@ -8,7 +8,7 @@ public class FlightBeforeTime implements Filters{
     @Override
     public List<Flight> filters(List<Flight> flightList) {
         LocalDateTime now = LocalDateTime.now();
-        Set<Flight> filterFlights = new HashSet<>(); // для больших наборов перелетов используем поиск в хеш сет
+        Set<Flight> filterFlights = new HashSet<>();
         for (Flight obj : flightList) {
             if (obj.getSegments().get(0).getDepartureDate().isBefore(now)) {
                 continue;

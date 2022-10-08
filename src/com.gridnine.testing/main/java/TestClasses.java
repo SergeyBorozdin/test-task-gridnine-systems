@@ -50,8 +50,8 @@ class FlightBuilder {
 class Flight {
     private final List<Segment> segments;
 
-    Flight(final List<Segment> segs) { // получает в конструктор массив сегментов
-        segments = segs; // сохранияет из конструктора переданный в свой массив
+    Flight(final List<Segment> segs) {
+        segments = segs;
     }
 
     List<Segment> getSegments() {
@@ -60,8 +60,8 @@ class Flight {
 
     @Override
     public String toString() {
-        return segments.stream().map(Object::toString) // использует стрим, мап преобразует в строку каждый сегмент
-            .collect(Collectors.joining(" ")); // и джойнит пробелом сегменты
+        return segments.stream().map(Object::toString)
+            .collect(Collectors.joining(" "));
     }
 }
 
@@ -73,9 +73,9 @@ class Segment {
 
     private final LocalDateTime arrivalDate;
 
-    Segment(final LocalDateTime dep, final LocalDateTime arr) { // в конструкторе присваивает своим переменным значения вылета прилета
-        departureDate = Objects.requireNonNull(dep); // проверяет не равно ли значение null
-        arrivalDate = Objects.requireNonNull(arr); // позволяет выбрасыывать исключения или лог
+    Segment(final LocalDateTime dep, final LocalDateTime arr) {
+        departureDate = Objects.requireNonNull(dep);
+        arrivalDate = Objects.requireNonNull(arr);
     }
 
     LocalDateTime getDepartureDate() {
