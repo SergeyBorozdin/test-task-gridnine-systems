@@ -1,13 +1,12 @@
 import java.time.temporal.ChronoUnit;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class TransferMore2hours implements Filters{
 
     @Override
     public List<Flight> filters(List<Flight> flightList) {
-        Set<Flight> filterFlights = new HashSet<>(); // для больших наборов перелетов используем поиск в хеш сет
+        List<Flight> filterFlights = new ArrayList<>(); // для больших наборов перелетов используем поиск в хеш сет
         boolean min2hours = false;
         for (Flight obj : flightList) {
             if (obj.getSegments().size() == 1) {
@@ -26,6 +25,6 @@ public class TransferMore2hours implements Filters{
             }
             min2hours = false;
         }
-        return filterFlights.stream().toList();
+        return filterFlights;
     }
 }

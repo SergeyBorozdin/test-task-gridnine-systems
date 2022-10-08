@@ -18,12 +18,14 @@ public class ArrivalsBeforeDepartureTest extends FlightBuilderClass {
         flightsListTest.add(flight2);
         flightsListTest.add(flight3);
         flightsListTest.add(flight4);
+        flightsListTest.add(flight5);
+
     }
 
     @Test
     public void filter() {
-        final List<Flight> actual = filtersTest.filters(flightsListTest.stream().toList());
-        final List<Flight> expected = Arrays.asList(flight1, flight2, flight3);
+        final List<Flight> actual = filtersTest.filters(flightsListTest);
+        final List<Flight> expected = Arrays.asList(flight1, flight2, flight3, flight4);
         assertEquals(expected, actual);
 
     }
